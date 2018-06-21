@@ -1,0 +1,13 @@
+.my-app .some-css-selector {
+  background: green;
+}
+
+.skip-me {
+  background: red;
+}
+
+@media (min-width: 768px) {
+  .my-app .some-css-selector {
+    width: 750px;
+  }
+}

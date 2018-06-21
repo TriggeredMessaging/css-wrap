@@ -38,7 +38,20 @@ Default value: `null`
 
 Skip css rules by regular expressions
 
+#### options.parent
+Type: `Boolean`
+Default value: `true`
+
+Causes `options.selector` to be a parent of wrapped selectors
+
+#### options.sibling
+Type: `Boolean`
+Default value: `false`
+
+Causes `options.selector` to be a sibling of wrapped selectors
+
 ## Changelog
 
 v0.0.1 - Initial Release
 v0.0.2 - Added options.skip
+v0.1.1 - Added options.sibling and options.parent

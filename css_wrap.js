@@ -24,7 +24,20 @@ var
       if ( r.selectors ) {
         r.selectors.forEach( function( s, index ) {
           if (options.skip && options.skip.test(s)) return
-          var selector = options.selector ? options.selector + " " + s : s;
+          var selector;
+          if (options.selector) {
+            if (options.sibling && options.parent) {
+              selector = options.selector + " " + s + ", " + options.selector + s;
+            } else if(options.sibling) {
+              selector = options.selector + s;
+            } else if(options.parent) {
+              selector = options.selector + " " + s;
+            } else {
+              selector = s;
+            }
+          } else {
+            selector = s;
+          }
           r.selectors[ index ] = selector;
         });
       }
@@ -38,7 +51,9 @@ var
     options = deepmerge({
       // Defaults
       selector: ".css-wrap",
-      skip: null
+      skip: null,
+      sibling: false,
+      parent: true,
     }, options || {});
     if (fs.existsSync(path.resolve(string))) {
       string = fs.readFileSync(string).toString();
